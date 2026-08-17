@@ -1,2 +1,520 @@
 <!DOCTYPE html>
-<a href="repository.ivarbrandt-1.0.3.zip">repository.ivarbrandt-1.0.3.zip</a>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidade FoxOS / Tailsgamerv</title>
+    <!-- Script Oficial do Gravatar -->
+    <script async src="https://secure.gravatar.com/js/gprofiles.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #121416;
+            color: #fcfcfc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Topbar / Navbar KDE Dark */
+        header {
+            background-color: #1b1e20;
+            border-bottom: 1px solid #31363b;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            height: 60px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .site-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid #3daee9;
+            cursor: pointer;
+        }
+
+        nav a {
+            color: #eff0f1;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover, nav a.active {
+            color: #3daee9;
+            background-color: #232629;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #eff0f1;
+            font-size: 14px;
+        }
+
+        /* Banner de Alerta Konqi */
+        .announcement-banner {
+            background: linear-gradient(90deg, #0a1118 0%, #172a3a 50%, #0a1118 100%);
+            border-bottom: 2px solid #da4453;
+            padding: 12px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .banner-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mascot-konqi {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .fox-scared-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 6px;
+            object-fit: cover;
+            border: 1px solid #da4453;
+        }
+
+        .banner-title {
+            font-size: 18px;
+            font-weight: 900;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        .btn-banner {
+            background-color: #da4453;
+            color: #ffffff;
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+            transition: background 0.2s;
+        }
+
+        .btn-banner:hover {
+            background-color: #ff4d4d;
+        }
+
+        /* Estrutura das Páginas */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            width: 100%;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active-page {
+            display: block;
+        }
+
+        /* Hero / Seção Principal */
+        .hero-section {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #292d32;
+        }
+
+        /* Card do Gravatar incorporado na página */
+        .gravatar-card-widget {
+            background-color: #1b1e20;
+            border: 1px solid #3daee9;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 320px;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 4px 15px rgba(61, 174, 233, 0.2);
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 2px solid #3daee9;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .gravatar-card-widget h2 {
+            font-size: 20px;
+            color: #ffffff;
+        }
+
+        .gravatar-card-widget p {
+            font-size: 13px;
+            color: #a0a0a0;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            color: #bdc3c7;
+            max-width: 800px;
+            margin: 0 auto 25px auto;
+            line-height: 1.6;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: #1d99f3;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .btn-yt {
+            background-color: #da4453;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .btn-gravatar {
+            background-color: #1e87f0;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Seção da Comic */
+        .comic-container {
+            background: #1b1e20;
+            border: 1px solid #292d32;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .comic-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #31363b;
+            margin-top: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        /* Seção de Anúncios e Eventos (Grid) */
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 40px 0 20px 0;
+            color: #ffffff;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background-color: #1b1e20;
+            border: 1px solid #292d32;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .card-tag {
+            background-color: #f67400;
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            color: #3daee9;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #a0a0a0;
+            line-height: 1.5;
+        }
+
+        /* Footer Estilo KDE */
+        footer {
+            background-color: #151719;
+            border-top: 1px solid #292d32;
+            padding: 40px 20px 20px 20px;
+            margin-top: auto;
+        }
+
+        .footer-cols {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            color: #ffffff;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #7f8c8d;
+            text-decoration: none;
+            font-size: 13px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .footer-col a:hover {
+            color: #3daee9;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: #545d62;
+            font-size: 12px;
+            border-top: 1px solid #232629;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header estilo kde.org -->
+    <header>
+        <div class="nav-left">
+            <img src="https://0.gravatar.com/userimage/255651233/88b1fc3ee4e255fc51cf115acb98e291?size=256" alt="Ícone" class="site-icon" onclick="switchPage('home')">
+            <nav style="display: flex; gap: 10px;">
+                <a onclick="switchPage('home')" id="nav-home" class="active">Início</a>
+                <a onclick="switchPage('produtos')" id="nav-produtos">Produtos</a>
+                <a onclick="switchPage('comics')" id="nav-comics">Comics & Arte</a>
+                <a onclick="switchPage('dev')" id="nav-dev">Desenvolvimento</a>
+                <a onclick="switchPage('apoiar')" id="nav-apoiar">♥ Apoiar</a>
+            </nav>
+        </div>
+        <div class="nav-right">
+            <span>🔍</span>
+            <span>🌐 PT-BR</span>
+        </div>
+    </header>
+
+    <!-- Banner com o Konqi -->
+    <div class="announcement-banner">
+        <div class="banner-content">
+            <img src="https://1.gravatar.com/userimage/255651233/080e4edb11c39c5f57112c92413f9af6?size=256&axis=min" alt="Konqi" class="mascot-konqi">
+            <img src="https://1.gravatar.com/userimage/255651233/c3c4b2242f33384c741e056d203ebf6c?size=256" alt="Raposa Assustada" class="fox-scared-img">
+            <div class="banner-title">SOCORRO! O KONQI VAI MATAR O TAILSGAMERV!!</div>
+        </div>
+        <a href="https://www.youtube.com/@Tailsgamerv" target="_blank" class="btn-banner">Assistir no YouTube</a>
+    </div>
+
+    <main>
+        <!-- PÁGINA 1: INÍCIO -->
+        <div id="page-home" class="page active-page">
+            <section class="hero-section">
+                
+                <!-- Card Estilo Gravatar Integrado -->
+                <div class="gravatar-card-widget">
+                    <img src="https://gravatar.com/avatar/39b1228b26785da75507f41c0d0d920a8239c8f66cb530cf8c326fd175ef541d?v=1780800072000&size=256&d=initials" alt="Tailsgamerv" class="profile-pic">
+                    <h2>Tailsgamerv</h2>
+                    <p>@tailsgamerv56 • Criador do FoxOS</p>
+                    <a href="https://gravatar.com/tailsgamerv56" target="_blank" class="btn-banner" style="background-color: #1e87f0; text-decoration: none; display: inline-block;">Ver Card Completo</a>
+                </div>
+
+                <h1>FoxOS Community</h1>
+                <p class="hero-desc">
+                    O lar oficial do <strong>FoxOS</strong> (Kubuntu 18.04 32 bits + KDE Plasma). Desempenho puro sem travar enquanto a raposa tenta escapar do Konqi!
+                </p>
+                <div class="hero-btns">
+                    <a href="https://www.youtube.com/@Tailsgamerv" target="_blank" class="btn-yt">📺 YouTube</a>
+                    <a href="https://gravatar.com/tailsgamerv56" target="_blank" class="btn-gravatar">👤 Perfil Gravatar</a>
+                    <a onclick="switchPage('produtos')" class="btn-primary" style="cursor: pointer;">📦 Baixar Apps</a>
+                </div>
+            </section>
+
+            <h2 class="section-title">Anúncios & Notícias</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <span class="card-tag">FoxOS v18.04</span>
+                    <h3>Kernel 32-bits Otimizado</h3>
+                    <p>O FoxOS continua garantindo estabilidade máxima em computadores antigos sem travar nada.</p>
+                </div>
+                <div class="card">
+                    <span class="card-tag" style="background-color: #da4453;">Konqi Alert</span>
+                    <h3>Ataque no Terminal</h3>
+                    <p>O Konqi tentou rodar pacotes 64 bits, mas o kernel do FoxOS repeliu as instruções com sucesso!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 2: COMICS & ARTE -->
+        <div id="page-comics" class="page">
+            <div class="comic-container">
+                <h1 style="color: #3daee9;">🎨 Quadrinhos & Galeria</h1>
+                <p style="color: #a0a0a0; margin-top: 10px;">Tirinhas oficiais do FoxOS e histórias de bastidores desenhadas por Tailsgamerv!</p>
+                <img src="https://1.gravatar.com/userimage/255651233/d4416614d48f34f354867fb47179b205?size=600" alt="Comic Oficial" class="comic-img">
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: PRODUTOS -->
+        <div id="page-produtos" class="page">
+            <h1>📦 Produtos & Downloads</h1>
+            <p style="color: #a0a0a0; margin-top: 10px; margin-bottom: 20px;">Baixe versões customizadas e ferramentas exclusivas do FoxOS.</p>
+            <div class="grid-2">
+                <div class="card">
+                    <span class="card-tag" style="background-color: #2ecc71;">ISO Oficial</span>
+                    <h3>FoxOS Plasma Edition (32 bits)</h3>
+                    <p>Baseado no Kubuntu 18.04 LTS com o ecossistema rápido e otimizado para a raposa.</p>
+                    <br>
+                    <a href="#" class="btn-primary" style="font-size: 12px; padding: 8px 14px;">Download (.ISO)</a>
+                </div>
+                <div class="card">
+                    <span class="card-tag">Em Construção</span>
+                    <h3>FoxOS Store (.apk & .exe)</h3>
+                    <p>Repositório especial com programas adaptados para máquinas com recursos limitados.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 4: DESENVOLVIMENTO -->
+        <div id="page-dev" class="page">
+            <h1>💻 Área do Desenvolvedor</h1>
+            <p style="color: #a0a0a0; margin-top: 10px;">Projetos em C++, scripts de automação e documentação do sistema.</p>
+            <div class="card" style="margin-top: 20px;">
+                <h3>Em breve...</h3>
+                <p>O código-fonte e o repositório do projeto estarão disponíveis no GitHub em breve!,  De qualquer forma, https://github.com/uwutestname08-ops</p>
+            </div>
+        </div>
+
+        <!-- PÁGINA 5: APOIAR -->
+        <div id="page-apoiar" class="page">
+            <h1>♥ Apoie o FoxOS</h1>
+            <p style="color: #a0a0a0; margin-top: 10px;">Ajude o Tailsgamerv a manter o projeto vivo e criar mais conteúdos!</p>
+            <div class="card" style="margin-top: 20px; border-color: #2ecc71;">
+                <h3 style="color: #2ecc71;">Contribua com o projeto</h3>
+                <p>Inscreva-se no canal do YouTube, compartilhe com os amigos ou envie feedback direto pelo Gravatar!</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Rodapé Completo KDE -->
+    <footer>
+        <div class="footer-cols">
+            <div class="footer-col">
+                <h4>Produtos</h4>
+                <a onclick="switchPage('produtos')">FoxOS Plasma</a>
+                <a onclick="switchPage('produtos')">Apps 32-bits</a>
+            </div>
+            <div class="footer-col">
+                <h4>Desenvolva</h4>
+                <a onclick="switchPage('dev')">GitHub Repo</a>
+                <a onclick="switchPage('dev')">Documentação</a>
+            </div>
+            <div class="footer-col">
+                <h4>Notícias</h4>
+                <a href="https://www.youtube.com/@Tailsgamerv" target="_blank">YouTube</a>
+                <a onclick="switchPage('home')">Anúncios</a>
+            </div>
+            <div class="footer-col">
+                <h4>Recursos</h4>
+                <a onclick="switchPage('comics')">Comics & Arte</a>
+                <a onclick="switchPage('home')">Wiki FoxOS</a>
+            </div>
+            <div class="footer-col">
+                <h4>Comunidade</h4>
+                <a href="https://gravatar.com/tailsgamerv56" target="_blank">Gravatar Profile</a>
+                <a href="https://gravatar.com/tailsgamerv56.card" target="_blank">Gravatar Card</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Comunidade FoxOS • Criado por Tailsgamerv :D
+        </div>
+    </footer>
+
+    <!-- Script de Navegação -->
+    <script>
+        function switchPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active-page'));
+
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.add('active-page');
+            }
+
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            const activeNav = document.getElementById('nav-' + pageId);
+            if (activeNav) {
+                activeNav.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

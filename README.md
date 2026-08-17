@@ -1,7 +1,7 @@
-# Tailsgamerv's Kodi Repository
+# Tailsgamerv's Repository
 
-Kodi addon repository for Somee Things...
+Website repository for Somee Things...
 
 ## IMPORTANT
 
-I Made This Repo For My Laptop.. Later It Will Be Public
+This Is Not Longer more a Kodi Repository. Anyways AAAAAAAAAAAA
